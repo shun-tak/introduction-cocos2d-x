@@ -15,9 +15,11 @@ class GameScene : public cocos2d::CCLayer
 {
 private:
     int nextNumber;
+    float gametime;
 
     void makeBackground();
     void makeCards();
+    void measureGametime(float fDelta);
 public:
     virtual bool init();
     static cocos2d::CCScene* scene();

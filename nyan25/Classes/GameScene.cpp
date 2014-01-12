@@ -30,6 +30,7 @@ bool GameScene::init()
     // 変数を初期化する
     srand((unsigned)time(NULL));
     nextNumber = 1;
+    gametime = 0;
 
     // タップイベントを取得する
     setTouchEnabled(true);
@@ -40,6 +41,9 @@ bool GameScene::init()
 
     // 1~25のカードを配置する
     makeCards();
+
+    // ゲーム時間をカウントアップする関数を毎フレーム呼び出す
+    this->schedule(schedule_selector(GameScene::measureGametime));
 
     return true;
 }
@@ -133,4 +137,12 @@ void GameScene::ccTouchEnded(CCTouch* pTouch, CCEvent* pEvent)
 
         nextNumber++;
     }
+}
+
+// ゲーム時間をカウントアップする
+void GameScene::measureGametime(float fDelta)
+{
+    gametime += fDelta;
+
+    CCLog("gametime: %f", gametime);
 }
