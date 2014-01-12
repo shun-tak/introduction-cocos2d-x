@@ -23,3 +23,9 @@ Retina 3.5インチかRetina 4.0インチかによって解像度が異なる。
 iPhoneでは画面左上が(0, 0)座標だが、
 OpenGLでは画面左下が(0, 0)座標となる。
 この変換をCCDirector::convertToGL関数が行ってくれる。
+
+### Cocos2d-xで使われる構造体
+
+- CCPoint
+- CCSize
+- CCRect
