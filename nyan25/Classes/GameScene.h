@@ -20,6 +20,7 @@ private:
     void makeBackground();
     void makeCards();
     void measureGametime(float fDelta);
+    void showGametimeLabel();
 public:
     virtual bool init();
     static cocos2d::CCScene* scene();

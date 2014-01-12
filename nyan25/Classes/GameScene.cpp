@@ -42,6 +42,9 @@ bool GameScene::init()
     // 1~25のカードを配置する
     makeCards();
 
+    // ゲーム時間を表示する
+    showGametimeLabel();
+
     // ゲーム時間をカウントアップする関数を毎フレーム呼び出す
     this->schedule(schedule_selector(GameScene::measureGametime));
 
@@ -132,6 +135,9 @@ void GameScene::ccTouchEnded(CCTouch* pTouch, CCEvent* pEvent)
 
         if (nextNumber >= 25)
         {
+            // ゲーム時間の計測を停止する
+            this->unschedule(schedule_selector(GameScene::measureGametime));
+
             return;
         }
 
@@ -144,5 +150,35 @@ void GameScene::measureGametime(float fDelta)
 {
     gametime += fDelta;
 
-    CCLog("gametime: %f", gametime);
+    // ゲーム時間を表示する
+    showGametimeLabel();
+}
+
+// ゲーム時間を表示する
+void GameScene::showGametimeLabel()
+{
+    // ゲーム時間ラベル用タグ
+    const int tagGametimeLabel = 100;
+
+    // ゲーム時間を文字列に変換する
+    CCString* timeString = CCString::createWithFormat("%8.1fs", gametime);
+
+    CCLabelTTF* timerLabel = (CCLabelTTF*)this->getChildByTag(tagGametimeLabel);
+    if (timerLabel)
+    {
+        // ゲーム時間を更新する
+        timerLabel->setString(timeString->getCString());
+    }
+    else
+    {
+        // 画面サイズを取得する
+        CCSize winSize = CCDirector::sharedDirector()->getWinSize();
+
+        // ゲーム時間ラベルを生成する
+        timerLabel = CCLabelTTF::create(timeString->getCString(), "Arial", 24.0);
+        timerLabel->setPosition(ccp(winSize.width * 0.9,
+                                    winSize.height * 0.9));
+        timerLabel->setTag(tagGametimeLabel);
+        this->addChild(timerLabel);
+    }
 }
