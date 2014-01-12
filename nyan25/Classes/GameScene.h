@@ -14,6 +14,8 @@
 class GameScene : public cocos2d::CCLayer
 {
 private:
+    int nextNumber;
+
     void makeBackground();
     void makeCards();
 public:

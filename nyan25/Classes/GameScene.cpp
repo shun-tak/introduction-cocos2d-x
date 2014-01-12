@@ -29,6 +29,7 @@ bool GameScene::init()
 
     // 変数を初期化する
     srand((unsigned)time(NULL));
+    nextNumber = 1;
 
     // タップイベントを取得する
     setTouchEnabled(true);
@@ -108,5 +109,28 @@ void GameScene::ccTouchEnded(CCTouch* pTouch, CCEvent* pEvent)
     CCDirector* pDirector = CCDirector::sharedDirector();
     CCPoint touchPoint = pDirector->convertToGL(pTouch->getLocationInView());
 
-    CCLog("x: %f, y: %f", touchPoint.x, touchPoint.y);
+    CCNode* pCard = this->getChildByTag(nextNumber);
+    if (!pCard)
+    {
+        return;
+    }
+
+    CCRect cardRect = pCard->boundingBox();
+    if (cardRect.containsPoint(touchPoint))
+    {
+        // 裏カードを作成する
+        CCSprite* pNewCard = CCSprite::create("card_backside.png");
+        pNewCard->setPosition(pCard->getPosition());
+        this->addChild(pNewCard);
+
+        // 表カードを削除する
+        pCard->removeFromParentAndCleanup(true);
+
+        if (nextNumber >= 25)
+        {
+            return;
+        }
+
+        nextNumber++;
+    }
 }
