@@ -30,6 +30,10 @@ bool GameScene::init()
     // 変数を初期化する
     srand((unsigned)time(NULL));
 
+    // タップイベントを取得する
+    setTouchEnabled(true);
+    setTouchMode(kCCTouchesOneByOne);
+
     // 背景を作成する
     makeBackground();
 
@@ -89,5 +93,20 @@ void GameScene::makeCards()
             numbers->removeObjectAtIndex(index);
         }
     }
+}
 
+// タップが開始されたことの処理
+bool GameScene::ccTouchBegan(CCTouch* pTouch, CCEvent* pEvent)
+{
+    return true;
+}
+
+// タップが終了したときの処理
+void GameScene::ccTouchEnded(CCTouch* pTouch, CCEvent* pEvent)
+{
+    // タップポイント取得
+    CCDirector* pDirector = CCDirector::sharedDirector();
+    CCPoint touchPoint = pDirector->convertToGL(pTouch->getLocationInView());
+
+    CCLog("x: %f, y: %f", touchPoint.x, touchPoint.y);
 }
