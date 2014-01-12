@@ -27,5 +27,20 @@ bool GameScene::init()
         return false;
     }
 
+    // 背景を作成する
+    makeBackground();
+
     return true;
+}
+
+// 背景を作成する
+void GameScene::makeBackground()
+{
+    // 画面サイズを取得
+    CCSize winSize = CCDirector::sharedDirector()->getWinSize();
+
+    // 背景を生成
+    CCSprite* pBG = CCSprite::create("background.png");
+    pBG->setPosition(ccp(winSize.width * 0.5, winSize.height * 0.5));
+    this->addChild(pBG);
 }

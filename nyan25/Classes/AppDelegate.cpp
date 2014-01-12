@@ -17,7 +17,10 @@ bool AppDelegate::applicationDidFinishLaunching() {
     CCEGLView* pEGLView = CCEGLView::sharedOpenGLView();
 
     pDirector->setOpenGLView(pEGLView);
-	
+
+    // 横幅を基準に画像サイズを調整する
+    pDirector->setContentScaleFactor(1024.0 / pDirector->getWinSize().width);
+
     // turn on display FPS
     pDirector->setDisplayStats(true);
 
