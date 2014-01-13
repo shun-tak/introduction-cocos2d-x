@@ -39,14 +39,20 @@ bool GameScene::init()
 
     CCSize bgSize = pBG->getContentSize();
 
+    // 雲のアクション作成
+    CCMoveBy* cloud1Action = CCMoveBy::create(80, ccp(bgSize.width, 0));
+    CCMoveBy* cloud2Action = CCMoveBy::create(160, ccp(bgSize.width, 0));
+
     // 雲の表示
     CCSprite* pCloud1 = CCSprite::create("cloud.png");
     pCloud1->setPosition(ccp(bgSize.width * 0.4, bgSize.height * 0.83));
+    pCloud1->runAction(cloud1Action);
     pBG->addChild(pCloud1);
 
     CCSprite* pCloud2 = CCSprite::create("cloud.png");
     pCloud2->setPosition(ccp(bgSize.width * 0.2, bgSize.height * 0.9));
     pCloud2->setScale(0.6);
+    pCloud2->runAction(cloud2Action);
     pBG->addChild(pCloud2);
 
     // ネコの表示
