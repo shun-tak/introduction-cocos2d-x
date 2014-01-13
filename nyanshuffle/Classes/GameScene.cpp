@@ -8,9 +8,11 @@
 
 #include "GameScene.h"
 #include "Animation.h"
+#include "SimpleAudioEngine.h"
 
 using namespace cocos2d;
 using namespace std;
+using namespace CocosDenshion;
 
 CCScene* GameScene::scene()
 {
@@ -67,12 +69,15 @@ bool GameScene::init()
     CCString* boxFileName = CCString::createWithFormat("box%d.png", random % 2 + 1);
     m_pBox1 = CCMenuItemImage::create(boxFileName->getCString(), boxFileName->getCString(), NULL, NULL);
     m_pBox1->setPosition(ccp(size.width * 0.2, size.height * 1.5));
+    m_pBox1->runAction(Animation::boxesStartAction(this, callfunc_selector(GameScene::playDroppingSound)));
 
     m_pBox2 = CCMenuItemImage::create(boxFileName->getCString(), boxFileName->getCString(), NULL, NULL);
     m_pBox2->setPosition(ccp(size.width * 0.5, size.height * 1.5));
+    m_pBox2->runAction(Animation::boxesStartActionWithVibration(this, callfunc_selector(GameScene::playDroppingSound)));
 
     m_pBox3 = CCMenuItemImage::create(boxFileName->getCString(), boxFileName->getCString(), NULL, NULL);
     m_pBox3->setPosition(ccp(size.width * 0.8, size.height * 1.5));
+    m_pBox3->runAction(Animation::boxesStartAction(this, callfunc_selector(GameScene::playDroppingSound)));
 
     CCMenu* menu = CCMenu::create(m_pBox1, m_pBox2, m_pBox3, NULL);
     menu->setPosition(CCPointZero);
@@ -80,4 +85,9 @@ bool GameScene::init()
     this->addChild(menu);
 
     return true;
+}
+
+void GameScene::playDroppingSound()
+{
+    SimpleAudioEngine::sharedEngine()->playEffect("rakka.mp3");
 }

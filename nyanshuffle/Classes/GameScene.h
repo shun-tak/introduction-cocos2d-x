@@ -21,6 +21,9 @@ protected:
     CCMenuItemImage* m_pBox2;
     CCMenuItemImage* m_pBox3;
 
+    // Chapter 6.4で追記する内容
+    void playDroppingSound();
+
 public:
     virtual bool init();
     static cocos2d::CCScene* scene();

@@ -18,6 +18,10 @@ class Animation
 public:
     // Chapter 6.4で追記する内容
     static CCFiniteTimeAction* catStartAction();
+
+    static CCFiniteTimeAction* vibrationAnimation();
+    static CCFiniteTimeAction* boxesStartAction(CCObject* target, SEL_CallFunc selector);
+    static CCFiniteTimeAction* boxesStartActionWithVibration(CCObject* target, SEL_CallFunc selector);
 };
 
 #endif // __ANIMATION_H__
