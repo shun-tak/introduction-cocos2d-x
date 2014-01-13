@@ -251,6 +251,7 @@
 		FA3EB2C31883BE420000A8F8 /* rakka.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA3EB2B51883BE420000A8F8 /* rakka.mp3 */; };
 		FA3EB2C41883BE420000A8F8 /* S in Resources */ = {isa = PBXBuildFile; fileRef = FA3EB2B61883BE420000A8F8 /* S */; };
 		FA3EB2C51883BE420000A8F8 /* titleBgm.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA3EB2B71883BE420000A8F8 /* titleBgm.mp3 */; };
+		FA3EB2C81883C0300000A8F8 /* Animation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FA3EB2C61883C0300000A8F8 /* Animation.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -752,6 +753,8 @@
 		FA3EB2B51883BE420000A8F8 /* rakka.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = rakka.mp3; sourceTree = "<group>"; };
 		FA3EB2B61883BE420000A8F8 /* S */ = {isa = PBXFileReference; lastKnownFileType = folder; path = S; sourceTree = "<group>"; };
 		FA3EB2B71883BE420000A8F8 /* titleBgm.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = titleBgm.mp3; sourceTree = "<group>"; };
+		FA3EB2C61883C0300000A8F8 /* Animation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Animation.cpp; path = ../Classes/Animation.cpp; sourceTree = "<group>"; };
+		FA3EB2C71883C0300000A8F8 /* Animation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Animation.h; path = ../Classes/Animation.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1275,6 +1278,8 @@
 				FA3EB2701883A9850000A8F8 /* GameScene.cpp */,
 				FA3EB2711883A9850000A8F8 /* GameScene.h */,
 				FA3EB2731883AD8C0000A8F8 /* AppMacros.h */,
+				FA3EB2C61883C0300000A8F8 /* Animation.cpp */,
+				FA3EB2C71883C0300000A8F8 /* Animation.h */,
 			);
 			name = Classes;
 			path = ../classes;
@@ -2048,6 +2053,7 @@
 				379BB9D317F03F3700829B88 /* CCSGUIReader.cpp in Sources */,
 				379BB9D417F03F3700829B88 /* CCSSceneReader.cpp in Sources */,
 				FA3EB2721883A9850000A8F8 /* GameScene.cpp in Sources */,
+				FA3EB2C81883C0300000A8F8 /* Animation.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

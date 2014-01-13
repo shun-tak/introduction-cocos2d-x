@@ -7,6 +7,7 @@
 //
 
 #include "GameScene.h"
+#include "Animation.h"
 
 using namespace cocos2d;
 using namespace std;
@@ -59,6 +60,7 @@ bool GameScene::init()
     CCString* catImagePath = CCString::createWithFormat("cat%d.png", random % 5 + 1);
     m_pCat = CCSprite::create(catImagePath->getCString());
     m_pCat->setPosition(ccp(size.width * 0.5, size.height * 0.5));
+    m_pCat->runAction(Animation::catStartAction());
     this->addChild(m_pCat, 0);
 
     // 箱の表示
