@@ -921,6 +921,7 @@
 		FA3EB2161883A9500000A8F8 /* titleBgm.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = titleBgm.mp3; sourceTree = "<group>"; };
 		FA3EB2701883A9850000A8F8 /* GameScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GameScene.cpp; path = ../Classes/GameScene.cpp; sourceTree = "<group>"; };
 		FA3EB2711883A9850000A8F8 /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameScene.h; path = ../Classes/GameScene.h; sourceTree = "<group>"; };
+		FA3EB2731883AD8C0000A8F8 /* AppMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppMacros.h; path = ../Classes/AppMacros.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1443,6 +1444,7 @@
 				1AFAF8B416D35DE700DB1158 /* AppDelegate.h */,
 				FA3EB2701883A9850000A8F8 /* GameScene.cpp */,
 				FA3EB2711883A9850000A8F8 /* GameScene.h */,
+				FA3EB2731883AD8C0000A8F8 /* AppMacros.h */,
 			);
 			name = Classes;
 			path = ../classes;
