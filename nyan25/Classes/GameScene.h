@@ -21,6 +21,8 @@ private:
     void makeCards();
     void measureGametime(float fDelta);
     void showGametimeLabel();
+    void makeRetryButton();
+    void tapRetryButton(CCNode *node);
 public:
     virtual bool init();
     static cocos2d::CCScene* scene();

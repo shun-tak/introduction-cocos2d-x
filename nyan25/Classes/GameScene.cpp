@@ -48,6 +48,9 @@ bool GameScene::init()
     // ゲーム時間をカウントアップする関数を毎フレーム呼び出す
     this->schedule(schedule_selector(GameScene::measureGametime));
 
+    // リトライボタンを作成する
+    makeRetryButton();
+
     return true;
 }
 
@@ -181,4 +184,31 @@ void GameScene::showGametimeLabel()
         timerLabel->setTag(tagGametimeLabel);
         this->addChild(timerLabel);
     }
+}
+
+// リトライボタンを作成する
+void GameScene::makeRetryButton()
+{
+    // 画面サイズを取得する
+    CCSize winSize = CCDirector::sharedDirector()->getWinSize();
+
+    // リトライボタンを作成する
+    CCLabelTTF* retryLabel = CCLabelTTF::create("Retry", "Arial", 24.0);
+    CCMenuItemLabel* retryItem = CCMenuItemLabel::create(retryLabel,
+                                                         this,
+                                                         menu_selector(GameScene::tapRetryButton));
+    retryItem->setPosition(ccp(winSize.width * 0.9, winSize.height * 0.2));
+
+    // メニューを作成する
+    CCMenu* menu = CCMenu::create(retryItem, NULL);
+    menu->setPosition(CCPointZero);
+    this->addChild(menu);
+}
+
+// リトライボタンタップ時の処理
+void GameScene::tapRetryButton(CCNode *node)
+{
+    // ゲームのシーンを新しく用意する
+    CCScene* gameScene = (CCScene*)GameScene::create();
+    CCDirector::sharedDirector()->replaceScene(gameScene);
 }
