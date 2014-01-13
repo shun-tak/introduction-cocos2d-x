@@ -51,6 +51,9 @@ bool GameScene::init()
     // リトライボタンを作成する
     makeRetryButton();
 
+    // ハイスコアを表示する
+    showHighScoreLabel();
+
     return true;
 }
 
@@ -141,6 +144,9 @@ void GameScene::ccTouchEnded(CCTouch* pTouch, CCEvent* pEvent)
             // ゲーム時間の計測を停止する
             this->unschedule(schedule_selector(GameScene::measureGametime));
 
+            // ハイスコアを表示する
+            showHighScoreLabel();
+
             return;
         }
 
@@ -211,4 +217,60 @@ void GameScene::tapRetryButton(CCNode *node)
     // ゲームのシーンを新しく用意する
     CCScene* gameScene = (CCScene*)GameScene::create();
     CCDirector::sharedDirector()->replaceScene(gameScene);
+}
+
+// ハイスコアラベルを表示する
+void GameScene::showHighScoreLabel()
+{
+    // CCUserDefaultクラスのインスタンスを取得する
+    CCUserDefault* userDefault = CCUserDefault::sharedUserDefault();
+
+    // ハイスコアのキーを取得する
+    const char* highScoreKey = "highscore";
+
+    // 以前のハイスコアを取得する
+    float highscore = userDefault->getFloatForKey(highScoreKey, 99.9);
+    if (gametime != 0)
+    {
+        if (gametime > highscore)
+        {
+            // ハイスコアが更新されていない場合は処理を抜ける
+            return;
+        }
+        else
+        {
+            // ハイスコアを更新する
+            highscore = gametime;
+
+            // ハイスコアを記録する
+            userDefault->setFloatForKey(highScoreKey, highscore);
+            userDefault->flush();
+        }
+    }
+
+    // ハイスコアラベル用タグ
+    const int tagHighScoreLabel = 200;
+
+    // ハイスコアを表示する文字列を生成する
+    CCString* highScoreString = CCString::createWithFormat("%8.1fs", highscore);
+
+    // ハイスコアラベルを取得する
+    CCLabelTTF* highScoreLabel = (CCLabelTTF*)this->getChildByTag(tagHighScoreLabel);
+    if (highScoreLabel)
+    {
+        // ハイスコアラベルを更新する
+        highScoreLabel->setString(highScoreString->getCString());
+    }
+    else
+    {
+        // 画面サイズを取得する
+        CCSize winSize = CCDirector::sharedDirector()->getWinSize();
+
+        // ハイスコアラベルを生成する
+        highScoreLabel = CCLabelTTF::create(highScoreString->getCString(), "Arial", 24.0);
+        highScoreLabel->setPosition(ccp(winSize.width * 0.9,
+                                        winSize.height * 0.7));
+        highScoreLabel->setTag(tagHighScoreLabel);
+        this->addChild(highScoreLabel);
+    }
 }

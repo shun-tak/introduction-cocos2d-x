@@ -23,6 +23,7 @@ private:
     void showGametimeLabel();
     void makeRetryButton();
     void tapRetryButton(CCNode *node);
+    void showHighScoreLabel();
 public:
     virtual bool init();
     static cocos2d::CCScene* scene();
