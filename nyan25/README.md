@@ -18,6 +18,8 @@ Retina 3.5インチかRetina 4.0インチかによって解像度が異なる。
 
 シミュレータのハードウェア>デバイスから変更できる。
 
+Androidの場合、Android Virtual Device Managerで変更できる。
+
 ### convertToGL
 
 iPhoneでは画面左上が(0, 0)座標だが、
